@@ -1,67 +1,75 @@
 window.onload = function() {
+
+    // 组件-一定要在vue前面
+    Vue.component('zy', {
+        template: '<h2>我是首页</h2>' //用什么模板来渲染他
+    });
+
+    Vue.component('rz', {
+        template: '<h2>我是日志</h2>' //用什么模板来渲染他
+    });
+    Vue.component('xc', {
+        template: '<h2>我是相册</h2>' //用什么模板来渲染他
+    });
+    Vue.component('lyb', {
+        template: '<h2>我是留言吧</h2>' //用什么模板来渲染他
+    });
+    Vue.component('ss', {
+        template: '<h2>我是说说</h2>' //用什么模板来渲染他
+    });
+    Vue.component('grd', {
+        template: '<h2>我是个人的</h2>' //用什么模板来渲染他
+    });
+    Vue.component('bzd', {
+        template: '<h2>bzd</h2>' //用什么模板来渲染他
+    });
+
     var agumon = new Vue({
         el: '.container', //id 在这个盒子里面才能操作下面的东西
         data: { //数据
-            myData: [{
-                "name": "空空",
-                "sex": "boy",
-                "age": "13"
-            }, {
-                "name": "夜夜",
-                "sex": "boy",
-                "age": "14"
-            }],
-            styles: { "completed": false },
-            username: '',
-            sex: '',
-            age: '',
-            tabindex: -100,
-            message: "输入框",
-            checked: false,
-            checkedNames: [],
-            picked: ''
+            types: [
+                { "title": "主页", "link": "zy" },
+                { "title": "日志", "link": "rz" },
+                { "title": "相册", "link": "xc" },
+                { "title": "留言吧", "link": "lyb" },
+                { "title": "说说", "link": "ss" },
+                { "title": "个人的", "link": "grd" },
+                { "title": "bzd", "link": "bzd" },
+            ],
+            show: 'rz'
         },
         computed: { //页面展示数据直接处理数据放出来
-            tablesDate: function() {
-                return this.myData.length;
-            }
+
         },
         methods: { //事件操作
-            add: function() {
-                if (this.username === "") {
-                    alert('不能为空');
-                } else {
-                    this.myData.push({
-                        name: this.username,
-                        age: this.age,
-                        sex: this.sex
-                    });
-                    this.username = '';
-                    this.age = '';
-                    this.sex = '';
-                }
-            },
-            deleteMsg: function(index) {
-                // console.log(this.tabindex)
-                this.myData.splice(index, 1);
-            },
-            tooggleComletion: function(styles) { //改变按钮
-                styles.completed = !styles.completed;
-
-            },
-            btnEvent: function(e) { //Event
-                alert(e.clientX + "-" + e.clientY)
-            },
-            btn1: function() { //冒泡
-                alert('我的盒子')
-                    // e.cancelBubble = true;
-            },
-            btn2: function() { //冒泡
-                alert('我是输入框')
-
-            }
 
         }
     });
+
+
+    function fouter() {
+        var str = location.hash;
+        str = str.slice(1);
+        str = str.replace(/^\//, '');
+        var map = {
+            zy: true,
+            rz: true,
+            xc: true,
+            lyb: true,
+            ss: true,
+            grd: true,
+            bzd: true
+        }
+        if (map[str]) {
+            agumon.show = str
+        } else {
+            agumon.show = 'zy'
+        }
+        console.log(str)
+    }
+
+    // window.addEventListener('hashChange', callback: EventListener, capture ? : boolean)
+    window.addEventListener('hashchange', fouter)
+
 
 };
