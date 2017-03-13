@@ -59,10 +59,14 @@
 .boxbtn {
     margin-top: 60px;
     transform: rotate(45deg);
-     transform: rotate(435deg);
+    transform: rotate(435deg);
 }
 
 @keyframes onr {
-from{ left: 0;}
-to{left: -440px}
+    from {
+        left: 0;
+    }
+    to {
+        left: -440px
+    }
 }
