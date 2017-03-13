@@ -11,11 +11,12 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     jshint = require('gulp-jshint'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    fileinclude = require('gulp-file-include'); //分离html
 
 gulp.task('default', ['jshint'], function() {
     gulp.start('minifyjs');
-    return runSequence(['clean'], ['build'], ['serve', 'watch']);
+    return runSequence(['clean'], ['build'], ['serve', 'watch'], ['fileinclude']);
 });
 
 gulp.task('clean', function(callback) {
@@ -89,6 +90,17 @@ gulp.task('minifyjs', function() {
         .pipe(uglify({ outSourceMap: false })) //压缩脚本文件
         .pipe(gulp.dest('./dist/javascripts/')); //输出压缩文件到指定目录
 });
+
+gulp.task('fileinclude', function() {
+    // 适配page中所有文件夹下的所有html，排除page下的include文件夹中html
+    return gulp.src(['src/**/*.html', '!src/include/**.html'])
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest('./dist/'));
+});
+
 
 gulp.task('jshint', function() {
     return gulp.src('./src/javascripts/**/*.js')
