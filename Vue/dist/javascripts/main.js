@@ -24,11 +24,12 @@ window.onload = function() {
             showkeyCode: '', //按键用的
             url: 'https://ps.ssl.qhimg.com/sdmt/144_135_100/t010bf04198ccd48ac0.jpg',
             url2: 'images/bkc.jpg',
-            w: '300px',
+            w: '320px',
             title: '我就是标题',
             alt: '描述？',
             green: 'green', //通过这里指向class 双方
-            red: 'red'
+            red: 'red',
+            latehide: false
         },
         computed: { //页面展示数据直接处理数据放出来 页面用法{{tablesDate}}
             tablesDate: function() {
@@ -78,6 +79,9 @@ window.onload = function() {
             },
             showkey2: function() {
                 alert('你回车了')
+            },
+            transitions: function() {
+                this.latehide = true;
             }
 
         }

@@ -2,6 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheets\main.css">
     <link rel="stylesheet" type="text/css" href="framework\bootstrap.min.css">
     <script type="text/javascript" src="framework/jquery.1.11.1.min.js"></script>
     <script type="text/javascript" src="framework/bootstrap.min.js"></script>
@@ -26,6 +27,11 @@
         
         .blue {
             color: cornflowerblue
+        }
+        
+        .late {
+            transform: translateX(-20px);
+            transition: transform .5s
         }
     </style>
 </head>
@@ -165,6 +171,21 @@
 
         <!--事件冒泡@click.stop-->
         <h2 class=" text-center page-header ">事件冒泡</h2>
+        <!-- 阻止单击事件冒泡 -->
+        <a v-on:click.stop="doThis"></a>
+        <!-- 提交事件不再重载页面 -->
+        <form v-on:submit.prevent="onSubmit"></form>
+        <!-- 修饰符可以串联  -->
+        <a v-on:click.stop.prevent="doThat"></a>
+        <!-- 只有修饰符 -->
+        <form v-on:submit.prevent></form>
+        <!-- 添加事件侦听器时使用事件捕获模式 -->
+        <div v-on:click.capture="doThis">...</div>
+        <!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+        <div v-on:click.self="doThat">...</div>
+        <!-- 点击事件将只会触发一次 -->
+        <a v-on:click.once="doThis"></a>
+
         <!--@click.stop="btn2() 在点击第一个上面增加事件冒泡-->
         <div @click="btn1()">
             <input type=" text " class="btn btn-info btn-xs " @click.stop="btn2()" value="阻止事件冒泡">
@@ -194,6 +215,12 @@
                     @keyup.down
                     @keyup.left
                     @keyup.right
+                    @keyup.enter
+                    @keyup.tab
+                    @keyup.delete (捕获 “删除” 和 “退格” 键)
+                    @keyup.esc
+                    @keyup.space
+                   
             -->
         <h2 class=" text-center page-header ">按键事件</h2>
         <div class="form-group">
@@ -232,7 +259,13 @@
 
 
         <img v-bind:src="url" alt="">
-        <img :src="url2" :alt="alt" :width="w" :title="title">
+
+        <div style="width: 300px; height: 300px;border:1px solid red;overflow: hidden">
+            <img :src="url2" :alt="alt" :class="{late:latehide}" :width="w" :title="title" @mouseover='transitions()'>
+
+        </div>
+
+
         <span :class='{blue:true}'>呵呵呵</span>
         <span :class='green'>哈哈哈</span>
         <span :class='[green,red]'>哈哈哈</span>
@@ -242,7 +275,7 @@
         <div class="form-group">
             <label for="">数据绑定:{{title}}</label>：
             <input type="text" v-model="title">
-            <div>数据只半丁一次{{*title}}</div>
+            <div>数据只半丁一次{{title}}</div>
         </div>
         <div style="height: 3000px;"></div>
     </div>
