@@ -225,8 +225,9 @@
                 {blue:true,red:false} false 不显示 json
                 [green,red]多个class 数组
             :style
-            
-        -->
+                [blue,red] 需要在data创建变量赋值（驼峰）
+                json 变量  data里面写json格式 的样式一堆
+         -->
         <h2 class=" text-center page-header ">属性绑定</h2>
 
 
@@ -236,9 +237,13 @@
         <span :class='green'>哈哈哈</span>
         <span :class='[green,red]'>哈哈哈</span>
 
+        <h2 class=" text-center page-header ">数据绑定</h2>
 
-
-
+        <div class="form-group">
+            <label for="">数据绑定:{{title}}</label>：
+            <input type="text" v-model="title">
+            <div>数据只半丁一次{{*title}}</div>
+        </div>
         <div style="height: 3000px;"></div>
     </div>
 </body>

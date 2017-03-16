@@ -30,7 +30,7 @@ window.onload = function() {
             green: 'green', //通过这里指向class 双方
             red: 'red'
         },
-        computed: { //页面展示数据直接处理数据放出来
+        computed: { //页面展示数据直接处理数据放出来 页面用法{{tablesDate}}
             tablesDate: function() {
                 return this.myData.length;
             }
