@@ -75,22 +75,22 @@ $legacy-support-for-ie:true;
     display: inline-block;
 }
 
-@mixin btn-success {
+@mixin fs-btn-success {
     background: rgb(168, 255, 96);
     color: rgb(255, 255, 255);
 }
 
-@mixin btn-warning {
+@mixin fs-btn-warning {
     background: rgb(252, 224, 116);
     color: rgb(255, 255, 255);
 }
 
-@mixin btn-info {
+@mixin fs-btn-info {
     background: rgb(121, 157, 251);
     color: rgb(255, 255, 255);
 }
 
-@mixin btn-error {
+@mixin fs-btn-error {
     background: rgb(255, 100, 100);
     color: rgb(255, 255, 255);
 }
@@ -105,10 +105,22 @@ $legacy-support-for-ie:true;
     text-align: center;
 }
 
-@mixin text-hide($hide:hidden, $wrap:nowrap, $ellipsis:ellipsis) {
+// 不换行
+@mixin text-nowrap($hide:hidden, $wrap:nowrap, $ellipsis:ellipsis) {
+    // 隐藏
     overflow: $hide;
+    // 不允许换行
     white-space: $wrap;
+    // 显示点点
     text-overflow: $ellipsis;
+}
+
+// 换行用
+@mixin text-wrap() {
+    /*支持IE，chrome，FF不支持*/
+    word-break: break-all;
+    /*支持IE，chrome，FF 单词整体换行*/
+    word-wrap: break-word;
 }
 
 // @function screen($screen){
