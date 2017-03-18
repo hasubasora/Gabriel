@@ -119,6 +119,10 @@
     </table>
 
 </script>
+
+
+<script type="text/x-template" id="fsWin">
+</script>
 <script>
     // 定义vue组件， 标签名字，页面输出标签名字就可以了。
     Vue.component('fs-form', {
@@ -172,8 +176,10 @@
                 styles.completed = !styles.completed;
 
             },
+
         }
     })
+
     new Vue({
         el: '.container', //id 在这个盒子里面才能操作下面的东西
         data: { //数据
@@ -202,7 +208,6 @@
                 // console.log(this.tabindex)
                 this.myData.splice(index, 1);
             },
-
 
         }
     })
