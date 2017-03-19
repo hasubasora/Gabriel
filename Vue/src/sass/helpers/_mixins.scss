@@ -140,3 +140,8 @@ $legacy-support-for-ie:true;
 //      @return (min-width 1180px);
 //   }
 // }
+@function fontSize($se, $base:16) {
+    @return ($se/$base)*1rem;
+}
+
+@debug fontSize(500);
