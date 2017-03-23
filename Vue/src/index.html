@@ -13,7 +13,7 @@
     <!--<script type="text/javascript" src="framework/vue.min.js"></script>-->
 
     <script src="javascripts/app.js"></script>
-    <script src="javascripts/filters.js"></script>
+    <script src="framework/PhoneLazyload.min.js"></script>
 
     <title>vuejs</title>
     <style>
@@ -26,6 +26,7 @@
             width: 100px;
             min-height: 100px;
             background: #fff url("images/01.gif") center center;
+            /*background-size: 100%;*/
         }
     </style>
 </head>
@@ -34,7 +35,8 @@
     <div class="container">
         <div id="canbox">
             <canvas data-src='images\bkc.jpg'></canvas>
-            <img src='images\bkc.jpg' />
+            <canvas data-src='images\jbs.png'></canvas>
+
         </div>
 
         <a href="www.baidu.com">dsafsda</a>
@@ -141,69 +143,9 @@
 <script>
     $(function() {
         $('#canbox').myCanvas({
-            'width': '100'
+            // 'width': '100',
         });
     })
-
-    // 定义构造函数
-    /**
-     *@param ele 传入的第一个对象 a 
-     *@window等系统变量在插件内部就有了一个局部的引用，可以提高访问速度，会有些许性能的提升
-     */
-    ;
-    (function($, window, document, undefined) {
-        var fixedStar = function(ele, opt) {
-            _this = this,
-                this.$element = ele, //需要操作的对象
-                this.defaults = {
-                    'width': '300',
-                    'height': '300'
-                },
-                this.options = $.extend({}, this.defaults, opt),
-                this.imglength = this.$element.find("canvas").length
-        };
-        // 定义一个方法
-        fixedStar.prototype = {
-            lazyload: function() {
-                if (this.imglength > 0) {
-                    this.$element.find("canvas").each(function() {
-                        var imgSrc = $(this).data("src");
-                        var imgObj = new Image();
-                        imgObj.canvas = $(this)[0];
-                        var cvs = imgObj.canvas.getContext('2d');
-                        if (cvs) {
-                            imgObj.onload = function() {
-                                imgObj.canvas.width = _this.options.width;
-                                imgObj.canvas.height = this.height;
-                                cvs.drawImage(this, 0, 0);
-                                $(imgObj.canvas).css("background-image", "none");
-                            }
-                            console.log(_this.options.width)
-                            imgObj.src = imgSrc;
-                        }
-                    })
-                }
-            }
-        };
-        //插件中使用对象
-        $.fn.myCanvas = function(options) {
-            var can = new fixedStar(this, options);
-            //调用其方法
-            return can.lazyload()
-        }
-
-    })(jQuery, window, document);
-
-
-
-
-
-
-
-
-
-
-
 
 
     // 定义vue组件， 标签名字，页面输出标签名字就可以了。
