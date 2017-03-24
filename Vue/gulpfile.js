@@ -12,7 +12,9 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     jshint = require('gulp-jshint'),
     autoprefixer = require('gulp-autoprefixer'),
+    babel = require('gulp-babel'),
     fileinclude = require('gulp-file-include'); //分离html
+
 
 gulp.task('default', ['jshint'], function() {
     gulp.start('minifyjs');
@@ -66,21 +68,14 @@ gulp.task('compass', function() {
         .pipe(gulp.dest('./dist/stylesheets/'));
 });
 
-// gulp.task('testAutoFx', function() {
-//     gulp.src('src/stylesheets/main.css')
-//         .pipe(autoprefixer({
-//             browsers: ['last 2 versions', 'Android >= 4.0'],
-//  cascade: true, //是否美化属性值 默认：true 像这样：
-//-webkit-transform: rotate(45deg);
-//        transform: rotate(45deg);
-// remove: true //是否去掉不必要的前缀 默认：true 
-//         }))
-//         .pipe(gulp.dest('./dist/stylesheets/'));
-// });
+
 
 //合并压缩js
 gulp.task('minifyjs', function() {
     return gulp.src('./src/javascripts*/**/*.js') //js代码校验
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(concat('main.js')) //js代码合并 main.js
         .pipe(gulp.dest('./dist/javascripts/')) //整合后的输出路径
         .pipe(rename({ suffix: '.min' })) ////给文件添加.min后缀
