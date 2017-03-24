@@ -33,15 +33,6 @@
 
 <body>
     <div class="container">
-        <div id="canbox">
-            <canvas data-src='images\bkc.jpg'></canvas>
-            <canvas data-src='images\jbs.png'></canvas>
-
-        </div>
-
-        <a href="www.baidu.com">dsafsda</a>
-
-
         <h2 class="text-center page-header">表单事件</h2>
         <!--直接渲染出来-->
         <fs-form :my-data='myData'></fs-form>
@@ -141,13 +132,6 @@
 </script>
 
 <script>
-    $(function() {
-        $('#canbox').myCanvas({
-            // 'width': '100',
-        });
-    })
-
-
     // 定义vue组件， 标签名字，页面输出标签名字就可以了。
     Vue.component('fs-form', {
         // 模板,可以直接写标签，可以用 script里面的内容id 就可以使用里面的元素
