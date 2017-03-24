@@ -94,12 +94,20 @@ window.onload = function () {
 "use strict";
 
 window.onload = function () {
-    var a = 1;
-    var b = 3;
+    // html直接调用
+    mode.init();
+};
+var mode = {
+    it: 111, //全局声明
+    init: function init() {
+        _this = undefined; //保存自己
+        // 操作方法 click什么的
+        _this.open(); //调用方法
+    },
+    open: function open() {
+        alert(234);
+    }
 
-    var c = function c() {
-        alert(123);
-    };
 };
 'use strict';
 
