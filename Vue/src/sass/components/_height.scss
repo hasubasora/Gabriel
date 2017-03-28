@@ -1,8 +1,64 @@
-@keyframes onr {
-    from {
-        left: 0;
+section {
+    color: #333;
+    @include span(12);
+    // border: 1px solid red;
+    min-height: 30px;
+    h5,
+    ul {
+        text-align: center;
+        li {
+            line-height: fontSize(26);
+            font-size: fontSize(16);
+        }
     }
-    to {
-        left: -440px
+    h5 {
+        margin-top: fontSize(60);
+        margin-bottom: fontSize(17);
+        font-weight: bold;
+        font-size: fontSize(26);
+    }
+    img {
+        width: fontSize(250);
+        margin: fontSize(23) auto;
+        text-align: center;
+    }
+    .divBox {
+        @include span(12);
+        .btnGunter {
+            display: block;
+            position: relative;
+            top: 0;
+            left: 0;
+            width: fontSize(200);
+            margin: 0 auto;
+            input {
+                display: block;
+                margin: fontSize(20) auto;
+                @include height(fontSize(49));
+                width: fontSize(190);
+                border: 1px solid #666 !important;
+                background: #f6f6f6;
+                border-radius: 5px;
+                font-size: fontSize(18);
+                text-indent: fontSize(40);
+            }
+            span {
+                display: block;
+                width: fontSize(28);
+                height: fontSize(31);
+                background-size: cover;
+                position: absolute;
+                top: fontSize(10);
+                left: fontSize(30);
+                background-image: url('../images/ad.png');
+            }
+            &:nth-child(2) {
+                span {
+                    width: fontSize(23);
+                    height: fontSize(31);
+                    background-image: url('../images/ios.png');
+                }
+            }
+        }
     }
 }

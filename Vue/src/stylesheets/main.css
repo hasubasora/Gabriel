@@ -125,12 +125,13 @@ a:hover {
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html,
+body {
   font-family: "微软雅黑";
   font-size: 100%;
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: #f6f6f6;
   color: #555;
 }
 
@@ -141,8 +142,10 @@ html *:after {
   transition: 0.1s;
 }
 
-html i, html em,
-html b, html strong,
+html i,
+html em,
+html b,
+html strong,
 html span {
   -webkit-transition: none;
   transition: none;
@@ -175,14 +178,9 @@ a {
   -webkit-box-shadow: 0px 5px -2px 0px #333;
   box-shadow: 0px 5px -2px 0px #333;
 }
-a:active {
-  color: #dedede;
-  -moz-box-shadow: 0px 1px 1px 0px #333;
-  -webkit-box-shadow: 0px 1px 1px 0px #333;
-  box-shadow: 0px 1px 1px 0px #333;
-}
 
-button, input[type=button] {
+button,
+input[type=button] {
   outline: none;
   border: none;
   cursor: pointer;
@@ -209,11 +207,72 @@ img {
 
 /*<i class="iconfont">&#x33;</i>*/
 /*! Component 组件*/
-@keyframes onr {
-  from {
-    left: 0;
-  }
-  to {
-    left: -440px;
-  }
+section {
+  color: #333;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  min-height: 30px;
+}
+section h5,
+section ul {
+  text-align: center;
+}
+section h5 li,
+section ul li {
+  line-height: 1.625rem;
+  font-size: 1rem;
+}
+section h5 {
+  margin-top: 3.75rem;
+  margin-bottom: 1.0625rem;
+  font-weight: bold;
+  font-size: 1.625rem;
+}
+section img {
+  width: 15.625rem;
+  margin: 1.4375rem auto;
+  text-align: center;
+}
+section .divBox {
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+section .divBox .btnGunter {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 12.5rem;
+  margin: 0 auto;
+}
+section .divBox .btnGunter input {
+  display: block;
+  margin: 1.25rem auto;
+  height: 3.0625rem;
+  line-height: 3.0625rem;
+  width: 11.875rem;
+  border: 1px solid #666 !important;
+  background: #f6f6f6;
+  border-radius: 5px;
+  font-size: 1.125rem;
+  text-indent: 2.5rem;
+}
+section .divBox .btnGunter span {
+  display: block;
+  width: 1.75rem;
+  height: 1.9375rem;
+  background-size: cover;
+  position: absolute;
+  top: 0.625rem;
+  left: 1.875rem;
+  background-image: url("../images/ad.png");
+}
+section .divBox .btnGunter:nth-child(2) span {
+  width: 1.4375rem;
+  height: 1.9375rem;
+  background-image: url("../images/ios.png");
 }
