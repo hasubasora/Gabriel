@@ -120,9 +120,18 @@ a:hover {
   box-sizing: border-box;
 }
 
-/*清除UC默认*/
 * {
   -webkit-tap-highlight-color: transparent;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  -webkit-appearance: none;
+}
+
+textarea {
+  -webkit-appearance: none;
 }
 
 html,
@@ -221,18 +230,18 @@ section ul {
 }
 section h5 li,
 section ul li {
-  line-height: 1.625rem;
-  font-size: 1rem;
+  line-height: fontSize(26);
+  font-size: fontSize(16);
 }
 section h5 {
-  margin-top: 3.75rem;
-  margin-bottom: 1.0625rem;
+  margin-top: fontSize(60);
+  margin-bottom: fontSize(17);
   font-weight: bold;
-  font-size: 1.625rem;
+  font-size: fontSize(26);
 }
 section img {
-  width: 15.625rem;
-  margin: 1.4375rem auto;
+  width: fontSize(250);
+  margin: fontSize(23) auto;
   text-align: center;
 }
 section .divBox {
@@ -246,33 +255,33 @@ section .divBox .btnGunter {
   position: relative;
   top: 0;
   left: 0;
-  width: 12.5rem;
+  width: fontSize(200);
   margin: 0 auto;
 }
 section .divBox .btnGunter input {
   display: block;
-  margin: 1.25rem auto;
-  height: 3.0625rem;
-  line-height: 3.0625rem;
-  width: 11.875rem;
+  margin: fontSize(20) auto;
+  height: fontSize(49);
+  line-height: fontSize(49);
+  width: fontSize(190);
   border: 1px solid #666 !important;
   background: #f6f6f6;
   border-radius: 5px;
-  font-size: 1.125rem;
-  text-indent: 2.5rem;
+  font-size: fontSize(18);
+  text-indent: fontSize(40);
 }
 section .divBox .btnGunter span {
   display: block;
-  width: 1.75rem;
-  height: 1.9375rem;
+  width: fontSize(28);
+  height: fontSize(31);
   background-size: cover;
   position: absolute;
-  top: 0.625rem;
-  left: 1.875rem;
+  top: fontSize(10);
+  left: fontSize(30);
   background-image: url("../images/ad.png");
 }
 section .divBox .btnGunter:nth-child(2) span {
-  width: 1.4375rem;
-  height: 1.9375rem;
+  width: fontSize(23);
+  height: fontSize(31);
   background-image: url("../images/ios.png");
 }

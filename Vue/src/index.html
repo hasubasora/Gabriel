@@ -5,46 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="stylesheets\main.css">
+    <link rel="stylesheet" href="framework\bootstrap.min.css">
 
 
-    <title>成为买家入口</title>
+    <title>测试</title>
 </head>
 
 <body>
-    <section>
-        <h5>车店用户 首选应用</h5>
-        <ul>
-            <li>●商城精心打磨，一站式汽修店采购应用</li>
-            <li>●闪配独有发布，既能求配件也能卖配件</li>
+    <nav>
+        <ul class="">
+            <li class=btn data-page="0">Home</li>
+            <li data-page="1">Profile</li>
+            <li data-page="2">Messages</li>
         </ul>
-    </section>
-    <section>
-        <img src="images/img2x.png" alt="">
-    </section>
-    <section>
-        <div class="divBox">
-            <a href="#" class="btnGunter">
-                <span></span>
-                <input type="button" value="立即下载">
-            </a>
-            <a href="#" class="btnGunter">
-                <span></span>
-                <input type="button" value="立即下载">
-            </a>
-        </div>
-
-    </section>
+    </nav>
+    <figure>
+        <img src="images/01.gif" alt="About image" />
+        <figcaption>
+            <p>This is an image of something interesting. </p>
+        </figcaption>
+    </figure>
+    <img src="images/01.gif" alt="About image" />
+    <small>Image of Mars. </small>
 </body>
 
 </html>
 
 <script>
-    (function() {
-        var ft = document.getElementsByTagName("html")[0]; //获取到html标签
-        var s = window.screen.width; //获取屏幕的宽度
-        window.onresize = function() { //屏幕尺寸改变触发
-            var w = document.body.offsetWidth; //获取浏览器内容的宽度
-            ft.style.fontSize = w / s * 16 + "px";
+    let oli = document.getElementsByTagName('li');
+    for (let i = 0; i < oli.length; i++) {
+        // alert(oli[i].dataset.page)
+
+        // oli[i].onclick = function() {
+        //     // alert(window.location.hash)
+        //     // alert(this)
+        //     window.location.hash = this.dataset.page;
+
+        // }
+        oli[i].index = i;
+        oli[i].onclick = () => {
+            // alert(window.location.hash)
+            // alert(this)
+            window.location.hash = oli[i].dataset.page;
         }
-    })();
+    }
+    window.onhashchange = () => {
+        let n = parseInt(window.location.hash.substring(1));
+        alert(n)
+    }
 </script>

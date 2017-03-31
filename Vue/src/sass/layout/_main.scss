@@ -5,13 +5,23 @@ gutters:$susyGutters, //间隔
 gutter-position:inside //位置
 );
 @include border-box-sizing();
-
-/*清除UC默认*/
-
+// uc default style
 * {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+// apple default style
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    -webkit-appearance: none;
+}
+
+textarea {
+    -webkit-appearance: none;
+}
+
+// all style
 html,
 body {
     font-family: $fontFamily;
