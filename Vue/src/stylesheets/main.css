@@ -216,72 +216,27 @@ img {
 
 /*<i class="iconfont">&#x33;</i>*/
 /*! Component 组件*/
-section {
-  color: #333;
-  width: 100%;
-  float: left;
-  padding-left: 0.83333%;
-  padding-right: 0.83333%;
-  min-height: 30px;
+.fs-table {
+  table-layout: fixed;
+  width: 1000px;
+  overflow-y: hidden;
 }
-section h5,
-section ul {
-  text-align: center;
+.fs-table thead {
+  border: 1px solid red;
 }
-section h5 li,
-section ul li {
-  line-height: fontSize(26);
-  font-size: fontSize(16);
+.fs-table thead th {
+  padding: 10px;
+  border: 1px solid red;
+  mix-width: 300px;
 }
-section h5 {
-  margin-top: fontSize(60);
-  margin-bottom: fontSize(17);
-  font-weight: bold;
-  font-size: fontSize(26);
+.fs-table tbody {
+  border: 1px solid black;
 }
-section img {
-  width: fontSize(250);
-  margin: fontSize(23) auto;
-  text-align: center;
+.fs-table tbody td {
+  border: 1px solid red;
+  padding: 10px;
 }
-section .divBox {
-  width: 100%;
-  float: left;
-  padding-left: 0.83333%;
-  padding-right: 0.83333%;
-}
-section .divBox .btnGunter {
-  display: block;
-  position: relative;
-  top: 0;
-  left: 0;
-  width: fontSize(200);
-  margin: 0 auto;
-}
-section .divBox .btnGunter input {
-  display: block;
-  margin: fontSize(20) auto;
-  height: fontSize(49);
-  line-height: fontSize(49);
-  width: fontSize(190);
-  border: 1px solid #666 !important;
-  background: #f6f6f6;
-  border-radius: 5px;
-  font-size: fontSize(18);
-  text-indent: fontSize(40);
-}
-section .divBox .btnGunter span {
-  display: block;
-  width: fontSize(28);
-  height: fontSize(31);
-  background-size: cover;
-  position: absolute;
-  top: fontSize(10);
-  left: fontSize(30);
-  background-image: url("../images/ad.png");
-}
-section .divBox .btnGunter:nth-child(2) span {
-  width: fontSize(23);
-  height: fontSize(31);
-  background-image: url("../images/ios.png");
+.fs-table tfoot {
+  border: 1px solid red;
+  padding: 10px;
 }
