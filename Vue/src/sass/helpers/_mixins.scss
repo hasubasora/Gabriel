@@ -76,22 +76,32 @@ $legacy-support-for-ie:true;
 }
 
 @mixin fs-btn-success {
-    background: rgb(168, 255, 96);
+    // background: rgb(168, 255, 96);
+    background: nth($xm, 1);
     color: rgb(255, 255, 255);
 }
 
 @mixin fs-btn-warning {
-    background: rgb(252, 224, 116);
+    // background: rgb(252, 224, 116);
+    background: nth($xm, 4);
     color: rgb(255, 255, 255);
 }
 
 @mixin fs-btn-info {
-    background: rgb(121, 157, 251);
+    // background: rgb(121, 157, 251);
+    background: nth($xm, 2);
     color: rgb(255, 255, 255);
 }
 
 @mixin fs-btn-error {
-    background: rgb(255, 100, 100);
+    // background: rgb(255, 100, 100);
+    background: nth($xm, 6);
+    color: rgb(255, 255, 255);
+}
+
+@mixin fs-btn-default {
+    // background: rgb(255, 100, 100);
+    background: nth($xm, 7);
     color: rgb(255, 255, 255);
 }
 

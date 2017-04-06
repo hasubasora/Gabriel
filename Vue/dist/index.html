@@ -16,33 +16,40 @@
 
 <body>
     <div class="col-md-12">
-        <input type="button" value="添加" id=btn class="btn btn-success">
+        <input type="button" value="添加" id=btn class="fs-btn fs-btn-success">
+        <input type="button" value="save" id=btn class="fs-btn fs-btn-success">
     </div>
-    <div class="col-md-10">
+    <div class="aaa">
+
         <table class="fs-table">
             <thead class="">
-                <th>32fdg fdg </th>
-                <th>地方广东佛山</th>
-                <th>地方规范的2</th>
-                <th>2 浮动是</th>
-                <th>地方2</th>
-                <th>2地方</th>
-                <th>2但是飞 </th>
-                <th>2个地方官 割发代首规范的</th>
-                <th>地方个地方官发多少2</th>
-                <th>2地方割发代首规范的</th>
+                <th>序号</th>
+                <th>项目</th>
+                <th>岗位</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th width=185px;>身份号</th>
+                <th width=150px;>当月工作考勤天数</th>
+                <th width=134px;>当月工资结算数</th>
+                <th width=135px;>当月工资支付数</th>
+                <th width=192px;>工资支付状况(是否支付)</th>
+                <th>备注</th>
+
             </thead>
             <tbody>
-                <td>dsfsda</td>
-                <td>dsfsda</td>
-                <td>dsfsda</td>
-                <td>dsfsd444433333333333a</td>
-                <td>dsfsgggggggggggggggggggggggggfg fsfgdsda</td>
-                <td>dsfsda</td>
-                <td>dsfsda</td>
-                <td>dsfsda</td>
-                <td>dsfsda</td>
-                <td>dsfsda</td>
+                <td>1</td>
+                <td>特种作业人员（工种）</td>
+                <td>搬砖</td>
+                <td>清水翔太</td>
+                <td>男</td>
+                <td>20</td>
+                <td>440103199803175139</td>
+                <td>12</td>
+                <td>34</td>
+                <td>3403234</td>
+                <td>34</td>
+                <td></td>
             </tbody>
             <tfoot></tfoot>
         </table>
@@ -52,27 +59,87 @@
 
 </body>
 <script>
-    $('table').on('click', 'tbody td', function(e) {
-        $(this).attr('contenteditable', 'true');
-        $(this).focus();
-        e.stopPropagation();
-    })
-    $(document).on('click', function() {
-        $('tbody td').removeAttr('contenteditable');
-    })
-    $(document).on('click', 'tbody td', function() {
-        $(this).removeAttr('contenteditable');
-    })
-    $('#btn').on('click', function() {
-        var tr = $('<tr>');
-        var str = [];
-        $.each($('thead th'), function(k, v) {
-            str.push('<td>&nbsp;</td>');
-        })
-        console.log(str)
-        tr.append(str);
-        $('tbody').append(tr);
-    })
+    // $('table').on('click', 'tbody td', function(e) {
+    //     $(this).attr('contenteditable', 'true');
+    //     $(this).focus();
+    //     e.stopPropagation();
+    // })
+    // $(document).on('click', function() {
+    //     $('tbody td').removeAttr('contenteditable');
+    // })
+    // $(document).on('click', 'tbody td', function() {
+    //     $(this).removeAttr('contenteditable');
+    // })
+    // $('#btn').on('click', function() {
+    //     var tr = $('<tr>');
+    //     var str = [];
+    //     $.each($('thead th'), function(k, v) {
+    //         str.push('<td>&nbsp;</td>');
+    //     })
+    //     console.log(str)
+    //     tr.append(str);
+    //     $('tbody').append(tr);
+    // })
+
+
+    var len = document.getElementsByTagName('td').length;
+    var tag = document.getElementsByTagName('td')
+    for (var t = 0; t < len; t++) {
+        tag[t].addEventListener('click', function(event) {
+            this.setAttribute('contenteditable', 'true');
+            this.focus();
+            event.cancelBubble = true;
+        });
+
+    }
+    //取消后的
+    document.onclick = function(event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        // console.log(target.nodeName)
+        if (target.nodeName == target.nodeName) {
+            for (var o = 0; o < len; o++) {
+                tag[o].removeAttribute('contenteditable');
+            }
+        }
+    };
+
+
+
+    //创建
+    var btn = document.getElementById('btn');
+    var thead = document.getElementsByTagName('thead')[0];
+    var tbodys = document.getElementsByTagName('tbody')[0];
+    var th = thead.getElementsByTagName('th')
+    var thLen = th.length;
+
+
+
+    tbodys.onclick = function(event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        console.log(tag[0].nodeName)
+        if (target.nodeName == tag[0].nodeName) {
+            target.setAttribute('contenteditable', 'true');
+            target.focus();
+            event.cancelBubble = true;
+        }
+    }
+
+
+
+
+
+    //add
+    btn.onclick = function() {
+        // insertRow
+        var tbody = document.getElementsByTagName('tbody')[0].insertRow(0);
+        tbody.setAttribute('role', 'row');
+        for (var r = 0; r < thLen; r++) {
+            var y = tbody.insertCell(r);
+            y.innerHTML = "&nbsp;";
+        }
+    }
 </script>
 
 </html>

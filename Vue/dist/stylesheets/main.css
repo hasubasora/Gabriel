@@ -220,8 +220,7 @@ img {
 /*! Component 组件*/
 .fs-table {
   table-layout: fixed;
-  width: 1000px;
-  overflow-y: hidden;
+  width: 1300px;
 }
 .fs-table thead {
   border: 1px solid red;
@@ -229,7 +228,7 @@ img {
 .fs-table thead th {
   padding: 10px;
   border: 1px solid red;
-  mix-width: 300px;
+  vertical-align: middle;
 }
 .fs-table tbody {
   border: 1px solid black;
@@ -241,4 +240,68 @@ img {
 .fs-table tfoot {
   border: 1px solid red;
   padding: 10px;
+}
+
+.aaa {
+  width: 1000px;
+  overflow: overlay;
+  overflow-x: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.fs-btn {
+  padding: 0.7rem 2.5rem;
+  text-align: center;
+  display: inline-block;
+}
+
+.fs-btn-success {
+  background: #1ab394;
+  color: white;
+}
+
+th,
+td {
+  font-size: 12px;
+}
+th:nth-child(1),
+td:nth-child(1) {
+  width: 100px;
+}
+th:nth-child(2),
+td:nth-child(2) {
+  width: 100px;
+}
+th:nth-child(3),
+td:nth-child(3) {
+  width: 100px;
+}
+th:nth-child(4),
+td:nth-child(4) {
+  width: 100px;
+}
+th:nth-child(5),
+td:nth-child(5) {
+  width: 100px;
+}
+th:nth-child(6),
+td:nth-child(6) {
+  width: 100px;
+}
+th:nth-child(7),
+td:nth-child(7) {
+  width: 200px;
+}
+th:nth-child(8),
+td:nth-child(8) {
+  width: 200px;
+}
+th:nth-child(9),
+td:nth-child(9) {
+  width: 200px;
+}
+th:nth-child(10),
+td:nth-child(10) {
+  width: 200px;
 }
