@@ -30,6 +30,9 @@
                  sf.config.tag[o].removeAttribute('contenteditable');
              }
          }
+         if (target.id.indexOf('son')) {
+             alert('此时进行#son元素的事件处理');
+         }
      },
      addBodys() {
          var thLen = sf.config.thead.getElementsByTagName('th').length;
