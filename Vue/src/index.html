@@ -45,7 +45,7 @@
                 <td>清水翔太</td>
                 <td>男</td>
                 <td>20</td>
-                <td>440103199803175139</td>
+                <td>440103*********5139</td>
                 <td>12</td>
                 <td>34</td>
                 <td>3403234</td>
@@ -65,10 +65,10 @@
     $(function() {
         sf.init();
         $('#btn2').on('click', function() {
-            console.log(filter.unhtmlForUrl($('tbody td').eq(1).text()))
+            console.log(filter.unhtml($('tbody td').eq(1).text()))
                 // var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
-            var a = filter.unhtmlForUrl($('tbody td').eq(1).text());
-            console.log(filter.phone(a))
+            var a = filter.unhtml($('tbody td').eq(1).text());
+            console.log(filter.unBlank(a))
                 // $(this).val(filter.unhtmlForUrl($('tbody td').eq(1).text()))
         })
     })
