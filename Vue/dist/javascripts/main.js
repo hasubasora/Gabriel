@@ -155,12 +155,16 @@ var sf = {
     unbodys: function unbodys(event) {
         event = event || window.event;
         var target = event.target || event.srcElement;
-        // console.log(target.nodeName)
         if (target.nodeName == target.nodeName) {
             for (var o = 0, i = sf.config.len; o < i; o++) {
                 sf.config.tag[o].removeAttribute('contenteditable');
             }
         }
+        //  console.log(!target.id.indexOf('btn')) //！true  正常0  找不到-1
+        //存在
+        //  if (!target.id.indexOf('btn')) {
+        //      alert('此时进行#son元素的事件处理');
+        //  }
     },
     addBodys: function addBodys() {
         var thLen = sf.config.thead.getElementsByTagName('th').length;
@@ -171,6 +175,9 @@ var sf = {
             var y = tbody.insertCell(r);
             y.innerHTML = "&nbsp;";
         }
+
+        // 文档片段优化法
+        //  var fragment = document.createDocumentFragment();
     }
 };
 'use strict';
@@ -352,6 +359,35 @@ Agumon.prototype = {
 
 };
 var agumon = new Agumon();
+'use strict';
+
+var filter = {
+    /** 将text中的html字符转义， 仅转义  ', ", <, > 四个字符
+     * @param  { String } str 需要转义的字符串
+     * @returns { String }     转义后的字符串 
+     */
+    unhtmlForUrl: function unhtmlForUrl(str) {
+        return str ? str.replace(/[<">']/g, function (a) {
+            return {
+                '<': '&lt;',
+                '"': '&quot;',
+                '>': '&gt;',
+                "'": '&#39;'
+            }[a];
+        }) : '';
+    },
+
+    /**
+     * 匹配电话号码的正则
+     * @param {String} tel 传入的电话号码
+     * @param {String} reg 正则
+     * @returns {bool}
+     */
+    VerificationPhone: function VerificationPhone(tel, reg) {
+        return tel ? reg || /^0?1[3|4|5|7|8][0-9]\d{8}$/.test(tel) : '';
+        // console.log(reg.test(tel))
+    }
+};
 'use strict';
 
 ;

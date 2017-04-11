@@ -24,15 +24,16 @@
      unbodys(event) {
          event = event || window.event;
          var target = event.target || event.srcElement;
-         // console.log(target.nodeName)
          if (target.nodeName == target.nodeName) {
              for (let o = 0, i = sf.config.len; o < i; o++) {
                  sf.config.tag[o].removeAttribute('contenteditable');
              }
          }
-         if (target.id.indexOf('son')) {
-             alert('此时进行#son元素的事件处理');
-         }
+         //  console.log(!target.id.indexOf('btn')) //！true  正常0  找不到-1
+         //存在
+         //  if (!target.id.indexOf('btn')) {
+         //      alert('此时进行#son元素的事件处理');
+         //  }
      },
      addBodys() {
          var thLen = sf.config.thead.getElementsByTagName('th').length;
@@ -43,6 +44,10 @@
              var y = tbody.insertCell(r);
              y.innerHTML = "&nbsp;";
          }
+
+         // 文档片段优化法
+         //  var fragment = document.createDocumentFragment();
+
      }
 
 
