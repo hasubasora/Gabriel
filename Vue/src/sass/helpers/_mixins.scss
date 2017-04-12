@@ -69,10 +69,31 @@ $legacy-support-for-ie:true;
     outline: 1px solid $color;
 }
 
-@mixin btn($a:.7rem, $b:2.5rem) {
+@mixin btn($a:rem(6), $b:rem(12)) {
     padding: $a $b;
-    text-align: center;
     display: inline-block;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    touch-action: manipulation;
+    // auto 当触控事件发生在元素上时，由浏览器来决定进行哪些操作，比如对viewport进行平滑、缩放等。
+    // none 当触控事件发生在元素上时，不进行任何操作。
+    // pan-x 如果当前元素最近的父元素可以横向滚动时，浏览器只允许在该父元素上进行横向滚动。
+    // pan-y 如果当前元素最近的父元素可以纵向滚动时，浏览器只允许在该父元素上进行纵向滚动。
+    // manipulation 浏览器只允许进行滚动和持续缩放操作。任何其它被auto值支持的行为不被支持。
+    user-select: none;
+    // none：文本不能被选择
+    // text：可以选择文本
+    // all： 当所有内容作为一个整体时可以被选择。如果双击或者在上下文上点击子元素，那么被选择的部分将是以该子元素向上回溯的最高祖先元素。
+    // element： 可以选择文本，但选择范围受元素边界的约束
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 20px;
 }
 
 @mixin fs-btn-success {
@@ -155,3 +176,34 @@ $legacy-support-for-ie:true;
 }
 
 @debug rem(500);
+@mixin b($bt) {
+    @if $bt==lg {
+        .btn-#{$bt} {
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.3333333;
+            border-radius: 10px*2;
+        }
+    }
+    @else if $bt==md {
+        .btn-#{$bt} {
+            @content;
+        }
+    }
+    @else if $bt==sm {
+        .btn-#{$bt} {
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 20px;
+        }
+    }
+    @else if $bt==xs {
+        .btn-#{$bt} {
+            padding: 1px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 20px;
+        }
+    }
+}
