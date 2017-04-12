@@ -62,9 +62,13 @@ gulp.task('compass', function() {
             cascade: false
         }))
         .pipe(gulp.dest('./dist/stylesheets/'))
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(rename({
+            suffix: '.min'
+        }))
         //压缩样式文件
-        .pipe(minifyCss({ outSourceMap: false }))
+        .pipe(minifyCss({
+            outSourceMap: false
+        }))
         //输出压缩文件到指定目录
         .pipe(gulp.dest('./dist/stylesheets/'));
 });
@@ -79,11 +83,17 @@ gulp.task('minifyjs', function() {
         }))
         .pipe(concat('main.js')) //js代码合并 main.js
         .pipe(gulp.dest('./dist/javascripts/')) //整合后的输出路径
-        .pipe(rename({ suffix: '.min' })) ////给文件添加.min后缀
+        .pipe(rename({
+            suffix: '.min'
+        })) ////给文件添加.min后缀
         .pipe(ngAnnotate())
-        .pipe(ngmin({ dynamic: false })) //Pre-minify AngularJS apps with ngmin
+        .pipe(ngmin({
+            dynamic: false
+        })) //Pre-minify AngularJS apps with ngmin
         .pipe(stripDebug()) //除去js代码中的console和debugger输出
-        .pipe(uglify({ outSourceMap: false })) //压缩脚本文件
+        .pipe(uglify({
+            outSourceMap: false
+        })) //压缩脚本文件
         .pipe(gulp.dest('./dist/javascripts/')); //输出压缩文件到指定目录
 });
 
@@ -132,7 +142,7 @@ gulp.task('watch', function() {
         './src/**/*.scss',
         './src/**/*.js'
     ], function() {
-        return runSequence(['build'], ['minifyjs'], ['reload']);
+        return runSequence(['build'], ['minifyjs'], ['fileinclude'], ['reload']);
     })
 });
 
