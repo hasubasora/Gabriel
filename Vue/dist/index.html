@@ -7,73 +7,39 @@
     <link rel="stylesheet" href="stylesheets\main.css">
     <!--<link rel="stylesheet" href="framework\bootstrap.min.css">-->
     <script src="framework\jquery-2.2.1.min.js"></script>
-
-
-    <title>测试s</title>
-    <style>
-
-    </style>
+    <title>Document</title>
 </head>
 
 <body>
-    <div class="col-md-12 fs-btn-group">
-        <input type="button" value="添添加添加添加加" id=btn class="fs-btn fs-btn-success btn-lg">
-        <input type="button" value="添添加添加添加加" id=btn class="fs-btn fs-btn-success btn-sm">
-        <input type="button" value="添添加添加添加加" id=btn class="fs-btn fs-btn-success btn-xs">
-        <input type="button" value="save" id=btn2 class="fs-btn fs-btn-success">
+
+    <input type="button" value="333366533333">
+    <div class="box">
+        <div class="bigbox">
+            <div class="title">SKI</div>
+            <div class="content">
+                <p>提示士大夫速度！提示士大夫速度！提示士大夫速度！</p>
+            </div>
+            <div class="tail">
+                <span><a href="#" class="yes">×</a></span>
+                <span><a href="#" class="no">○</a></span>
+            </div>
+        </div>
     </div>
-    <div class="aaa">
-
-        <table class="fs-table">
-            <thead class="">
-                <th>序号</th>
-                <th>项目</th>
-                <th>岗位</th>
-                <th>姓名</th>
-                <th>性别</th>
-                <th>年龄</th>
-                <th width=185px;>身份号</th>
-                <th width=150px;>当月工作考勤天数</th>
-                <th width=134px;>当月工资结算数</th>
-                <th width=135px;>当月工资支付数</th>
-                <th width=192px;>工资支付状况(是否支付)</th>
-                <th>备注</th>
-
-            </thead>
-            <tbody>
-                <td>1</td>
-                <td>特种作业人员（工种）</td>
-                <td>搬砖</td>
-                <td>清水翔太</td>
-                <td>男</td>
-                <td>20</td>
-                <td>440103*********5139</td>
-                <td>12</td>
-                <td>34</td>
-                <td>3403234</td>
-                <td>34</td>
-                <td></td>
-            </tbody>
-            <tfoot></tfoot>
-        </table>
-
-    </div>
-
-
 </body>
-<script src="javascripts\app.js"></script>
-<script src="javascripts\filters.js"></script>
 <script>
-    $(function() {
-        sf.init();
-        $('#btn2').on('click', function() {
-            console.log(filter.unhtml($('tbody td').eq(1).text()))
-                // var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
-            var a = filter.unhtml($('tbody td').eq(1).text());
-            console.log(filter.unBlank(a))
-                // $(this).val(filter.unhtmlForUrl($('tbody td').eq(1).text()))
-        })
-    })
+    document.getElementsByClassName('no')[0].onclick = function() {
+        document.getElementsByClassName('bigbox')[0].classList.add('tf');
+
+        setTimeout(function() {
+            document.getElementsByClassName('box')[0].style.display = "none";
+        }, 400);
+        setTimeout(function() {
+            document.getElementsByClassName('bigbox')[0].classList.remove('tf');
+        }, 1000);
+    }
+    document.getElementsByTagName('input')[0].onclick = function() {
+        document.getElementsByClassName('box')[0].style.display = "block";
+    }
 </script>
 
 </html>
