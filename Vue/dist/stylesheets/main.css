@@ -236,13 +236,15 @@ header .tag {
   float: left;
   padding-left: 0.83333%;
   padding-right: 0.83333%;
+  position: relative;
   margin: 0 auto;
   float: none;
   border: 1px solid #1e89e0;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
   *zoom: 1;
   padding: 0;
+  height: 2.375rem;
 }
 header .tag:before, header .tag:after {
   content: "";
@@ -256,18 +258,24 @@ header .tag span {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
   text-align: center;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+  position: absolute;
+  top: 0;
 }
 header .tag span.tag-left {
   width: 50%;
   float: left;
   padding-left: 0.83333%;
   padding-right: 0.83333%;
+  left: 0;
 }
 header .tag span.tag-right {
   width: 50%;
   float: left;
   padding-left: 0.83333%;
   padding-right: 0.83333%;
+  right: 0;
 }
 header .tag span.on {
   background: #1e89e0;
@@ -315,7 +323,6 @@ section .tel .tel-dist, section .code .tel-dist, section .invitation .tel-dist, 
   padding-right: 0.83333%;
   height: 2.5rem;
   line-height: 40px;
-  background: #fff;
 }
 section .tel #tel, section .code #tel, section .invitation #tel, section .next-tab #tel, section .next-tab2 #tel, section .pwd #tel {
   height: 2.5rem;
@@ -323,6 +330,23 @@ section .tel #tel, section .code #tel, section .invitation #tel, section .next-t
   float: left;
   padding-left: 0.83333%;
   padding-right: 0.83333%;
+}
+section .inputR {
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom: 1px solid #1e89e0;
+}
+section .inputR2 {
+  -webkit-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+section input {
+  border-bottom: 1px solid #1e89e0;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background: #f6f6f6;
 }
 section .code {
   padding-top: 1.25rem;
@@ -351,12 +375,18 @@ section .qcCode1 {
   right: 0;
   width: 0;
 }
-section #invitation {
+section .phoneinput {
   height: 2.5rem;
   width: 100%;
   float: left;
   padding-left: 0.83333%;
   padding-right: 0.83333%;
+}
+section .disabled {
+  background: #C0D6E8 !important;
+}
+section .margintop {
+  margin-top: 1.25rem;
 }
 section .next-tab, section .next-tab2 {
   background: #1e89e0;
@@ -367,6 +397,8 @@ section .next-tab, section .next-tab2 {
   float: left;
   padding-left: 0.83333%;
   padding-right: 0.83333%;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
 }
 
 h3 {

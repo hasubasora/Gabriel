@@ -4,21 +4,28 @@ header {
     padding-top: rem(20);
     .tag {
         @include span(10);
+        position: relative;
         margin: 0 auto;
         float: none;
         border: 1px solid nth($color, 1);
-        border-radius: 5px;
+        border-radius: 30px;
         @include clearfix;
         padding: 0;
+        height: rem(38);
         span {
             padding-top: rem(10);
             padding-bottom: rem(10);
             text-align: center;
+            border-radius: 30px;
+            position: absolute;
+            top: 0;
             &.tag-left {
                 @include span(6);
+                left: 0;
             }
             &.tag-right {
                 @include span(6);
+                right: 0
             }
             &.on {
                 background: nth($color, 1);
@@ -42,12 +49,24 @@ section {
             @include span(2);
             height: rem(40);
             line-height: 40px;
-            background: nth($bgcolor, 1);
         }
         #tel {
             height: rem(40);
             @include span(10);
         }
+    }
+    .inputR {
+        border-bottom-left-radius: 5px;
+        border-bottom: 1px solid nth($color, 1);
+    }
+    .inputR2 {
+        border-bottom-left-radius: 0;
+    }
+    input {
+        border-bottom: 1px solid nth($color, 1);
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        background: #f6f6f6;
     }
     .code {
         @extend .tel;
@@ -77,9 +96,15 @@ section {
     .invitation {
         @extend .tel;
     }
-    #invitation {
+    .phoneinput {
         height: rem(40);
         @include span(12);
+    }
+    .disabled {
+        background: #C0D6E8 !important;
+    }
+    .margintop {
+        margin-top: rem(20);
     }
     .next-tab {
         background: nth($color, 1);
@@ -88,6 +113,7 @@ section {
         height: rem(40);
         margin: rem(20) auto;
         @include span(12);
+        border-radius: 30px;
     }
     .next-tab2 {
         @extend .next-tab;

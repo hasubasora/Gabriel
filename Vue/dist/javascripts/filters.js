@@ -1,4 +1,4 @@
-let filter = {
+const filter = {
     /** 将text中的html字符转义， 仅转义  ', ", <, > 四个字符
      * @param  { String } str 需要转义的字符串
      * @returns { String }     转义后的字符串 

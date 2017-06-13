@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="stylesheets\main.css">
 
@@ -42,7 +42,7 @@
             _t = this;
 
             //切换
-            $('.tag span').on('click', function() {
+            $('.tag span').on('touchstart', function() {
                 _index = $(this).index();
                 $(this).addClass('on').siblings('span').removeClass('on');
                 $('.tag-text').eq(_index).show().siblings('.tag-text').hide();
@@ -50,32 +50,48 @@
             //检测手机号
             $('#tel').on('keyup', function() {
                 if ($(this).val().length == 11) {
-                    console.log(_t.verifyPhone($(this).val()));
                     if (_t.verifyPhone($(this).val())) {
                         _t.verifyTel($(this).val());
                     }
                 }
             });
             //获取验证码
-            $('#qcCode').on('click', () => {
-                if (!$('#tel').val()) {
-                    alert('输入手机号');
-                } else {
-                    if (_t.verifyTel($('#tel').val())) {
-                        $('#tel').attr('readonly');
-                        _t.qcCode($('#qcCode'));
+            $('#qcCode').on('touchstart', function() {
+                var telen = $('#tel').val();
+                var tel1 = _t.verifyPhone(telen);
+                if (!telen || telen.length < 11 || tel1 == false) {
+                    alert('请输入正确手机号');
+                }
+                // alert(tel1);
+                if (tel1) {
+                    $('#tel').attr('readonly');
+                    _t.sendCode($('#tel').val());
+                    _t.qcCode($('#qcCode'));
+                }
+
+
+            });
+
+            //下一步
+            $('.next-tab').on('touchstart', function() {
+                var nexto = _t.verifyPhone($('#tel').val());
+                if (nexto && $('#code').val() != '') {
+                    _t.verifyCode($('#code').val(), $('#tel').val(), $('#codeNumber').val())
+                }
+                if (!$('#tel').val() || $('#tel').val().length < 11 || !nexto) {
+                    alert('请输入正确手机号');
+                    return false;
+                } else if ($('#tel').val()) {
+                    if (!$('#code').val()) {
+                        alert('请输入验证码');
+                        return false;
                     }
                 }
-            });
-            //下一步
-            $('.next-tab').on('click', function() {
-                _t.verifyCode($('#code').val())
             });
 
         },
         qcCode(obj) { //获取验证码
             $('.qcCode1').css('width', '122px');
-            obj.off('click');
             var a = 60;
             var timer = setInterval(function() {
                 if (a > 0) {
@@ -90,27 +106,41 @@
                 }
             }, 1000);
         },
-        verifyCode(code) { //验证 验证码
+        verifyCode(code, phone, codeNumber) { //验证 验证码
             $.ajax({
                 url: codeUrl, //验证码存在的地址
                 type: 'post',
                 dataType: 'json',
                 data: {
-                    code: code
+                    verifyCode: code,
+                    phone: phone,
+                    codeNumber: codeNumber
                 },
                 success: function(result) {
-                    if (result.status == 1) {
-                        //验证成功再发送验证码 返回true  跳转下一步
-                        return true;
-
-                    } else if (result.status == 0) {
-                        //返回false 
+                    // console.log(result);
+                    if (result.status == 0) {
+                        //没有注册的跳注册页面
+                        window.location.href = initCodePwd;
+                        return;
+                    } else if (result.status == 1) {
+                        //已经注册过的绑定手机号
+                        window.location.href = qrCodeSucess;
+                        return;
+                    } else if (result.status == 2) {
+                        //验证码
+                        layer.msg(result.info);
+                        //                      console.log(result.info)
+                        return false;
+                    } else if (result.status == 3) {
+                        //绑定失败
+                        layer.msg('绑定失败请稍后再试！');
+                        //                        window.location.href=_home;
                         return false;
 
                     }
                 },
                 error: function() {
-                    alert('服务器连接失败，请确认网络是否开启');
+                    layer.msg('服务器连接失败，请确认网络是否开启');
                     return false;
                 }
             })
@@ -135,16 +165,70 @@
                         //验证成功再发送验证码 返回true
                         return true;
                     } else if (result.status == 0) {
-                        //返回false 
+                        alert('该手机号已经注册,下一步自动绑定当前企业');
+                        //                        _t.hasPhone(tel);
+                        //返回false
                         return false;
                     }
                 },
                 error: function() {
-                    alert('服务器连接失败，请确认网络是否开启');
+                    layer.msg('服务器连接失败，请确认网络是否开启');
                     return false;
                 }
             })
 
+        },
+        hasPhone(tel) {
+            $.ajax({
+                url: bind, //发送验证码
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    phone: tel
+                },
+                success: function(result) {
+                    if (result.status == 1) {
+                        layer.msg('绑定成功');
+                    } else if (result.status == 0) {
+                        layer.msg('绑定失败');
+                    }
+                },
+                error: function() {
+                    layer.msg('服务器连接失败，请确认网络是否开启');
+                    return false;
+                }
+            })
+
+        },
+
+        /**
+         * 发送验证码
+         */
+        sendCode(tel) {
+            $.ajax({
+                url: sendCodeUrl, //发送验证码
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    phone: tel
+                },
+                success: function(result) {
+                    if (result.status == 1) {
+                        //验证成功再发送验证码 返回true  跳转下一步
+                        layer.msg('发送成功');
+                        return true;
+                    } else if (result.status == 0) {
+                        layer.msg('发送失败');
+                        //返回false
+                        return false;
+
+                    }
+                },
+                error: function() {
+                    layer.msg('服务器连接失败，请确认网络是否开启');
+                    return false;
+                }
+            })
         },
 
 

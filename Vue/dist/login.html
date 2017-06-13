@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="stylesheets\main.css">
     <script>
@@ -19,28 +19,29 @@
     <header>
         <div class="tag">
             <span class="tag-left on">新用户注册</span>
-            <span class="tag-right ">使用邀请码</span>
+            <span class="tag-right">登&nbsp;录</span>
         </div>
     </header>
     <section class="tag-text">
         <div class="tel">
-            <span class="tel-dist">
+            <span class="tel-dist inputR">
                 +86
             </span>
-            <input type="tel" name="tel" id="tel">
+            <input type="tel" name="tel" id="tel" class="inputR2" placeholder='手机号' maxlength="11">
         </div>
         <div class="code">
             <input type="tel" name="tel" id="code">
             <a href="javascript:void(0);" id="qcCode">获取验证码</a>
             <a href="javascript:void(0);" class="qcCode1"></a>
 
-            <input type="button" value="下一步" class="next-tab">
+            <input type="button" value="下一步" class="next-tab disabled" disabled='disabled'>
         </div>
     </section>
     <section class="tag-text" style="display:none">
         <div class="invitation">
-            <input type="tel" name="invitation" id="invitation" placeholder="邀请码">
-            <input type="button" value="下一步" class="next-tab2">
+            <input type="tel" name="invitation" class="phoneinput" id="phone" placeholder="手机号" maxlength="11">
+            <input type="password" name="pwd" class="phoneinput margintop" id="pwd" placeholder="密码">
+            <input type="button" value="登&nbsp;录" class="next-tab2 disabled" disabled='disabled'>
         </div>
     </section>
 </body>
@@ -59,45 +60,88 @@
             $('.tag span').on('click', function() {
                 _index = $(this).index();
                 $(this).addClass('on').siblings('span').removeClass('on');
-                $('.tag-text').eq(_index).show().siblings('.tag-text').hide();
+                $('.tag-text').eq(_index).fadeIn().siblings('.tag-text').hide();
             });
-
-
-            //检测手机号
-            $('#tel').on('keyup', function() {
-                if ($(this).val().length == 11) {
-                    console.log(_t.verifyPhone($(this).val()));
-                    if (_t.verifyPhone($(this).val())) {
-                        _t.verifyTel($(this).val());
-                    }
-                }
-            });
-
 
             //获取验证码
             $('#qcCode').on('click', function() {
                 if (!$('#tel').val()) {
                     alert('输入手机号');
-                } else {
-                    $('#tel').attr('readonly');
-                    _t.sendCode($('#tel').val());
+                } else if ($('#tel').val().length < 11) {
+                    alert('输入正确手机号');
+                }
+                if ($('#tel').val().length == 11) {
+                    console.log(_t.verifyPhone($('#tel').val()));
+                    console.log($('#tel').val());
+                    if (_t.verifyPhone($('#tel').val())) {
+                        $('#tel').attr('disabled', 'disabled');
+                        _t.qcCode($('#qcCode'));
+                        _t.sendCode($('#tel').val());
+                    } else {
+                        alert('输入正确手机号');
+                    }
                 }
             });
 
 
-            //下一步
+
+            var fige = 0;
+            var make = 0;
+            var dots = 0,
+                dots2 = 0;
+            $(document).on('keyup', function(event) {
+                event = event || window.event;
+                var el = event.target || event.srcElement;
+                // alert(el.id)
+                // 登录页面
+                if (el.id == 'phone') {
+                    $('#phone').val() ? make = 1 : make = 0;
+                }
+                if (el.id == 'pwd') {
+                    $('#pwd').val() ? fige = 1 : fige = 0;
+                }
+                if (fige == 1 && make == 1) {
+                    $('.next-tab2').removeClass('disabled').removeAttr('disabled');
+                } else {
+                    $('.next-tab2').addClass('disabled').attr('disabled', 'disabled');
+                }
+
+                //注册页面
+                if (el.id == 'tel') {
+                    $('#tel').val() ? dots = 1 : dots = 0;
+                }
+                if (el.id == 'code') {
+                    $('#code').val() ? dots2 = 1 : dots2 = 0;
+                }
+                _dockeyup(dots, dots2, $('.next-tab'))
+
+                // if (dots == 1 && dots2 == 1) {
+                //     $('.next-tab').removeClass('disabled').removeAttr('disabled');
+                // } else {
+                //     $('.next-tab').addClass('disabled').attr('disabled', 'disabled');
+                // }
+
+
+            });
+            //下一步 注册
             $('.next-tab').on('click', function() {
                 _t.verifyCode($('#code').val(), $('#tel').val())
             });
 
-
-            //下一步 邀请码    这里不行10061993633
+            //下一步 登录
             $('.next-tab2').on('click', function() {
-                _t.verifyInvitation($('#invitation').val());
+                _t.login($('#phone').val(), $('#pwd').val());
             });
 
         },
+        dockeyup(d1, d2, d3) {
+            if (d1 == 1 && d2 == 1) {
+                d3.removeClass('disabled').removeAttr('disabled');
+            } else {
+                d3.addClass('disabled').attr('disabled', 'disabled');
+            }
 
+        },
 
         /**
          * 发送验证码
@@ -133,7 +177,6 @@
         //获取验证码
         qcCode(obj) {
             $('.qcCode1').css('width', '122px');
-            obj.off('click');
             var a = 60;
             var timer = setInterval(function() {
                 if (a > 0) {
@@ -143,7 +186,7 @@
                     clearInterval(timer);
                     obj.text("获取验证码");
                     $('.qcCode1').css('width', '0');
-                    $('#tel').removeAttr('readonly');
+                    $('#tel').removeAttr('disabled');
                     a = 60;
                 }
             }, 1000);
@@ -216,26 +259,27 @@
         },
 
 
-        verifyInvitation(y) {
+        login(y, x) {
             $.ajax({
                 url: invitationUrl,
                 type: 'post',
                 dataType: 'json',
                 data: {
-                    code: y
+                    username: y,
+                    password: x
                 },
                 success: function(result) {
-                    //                    console.log(result.ret)
+                    //   console.log(result.ret)
                     if (result.ret == 1) {
                         window.location.href = inviteR + "?code=" + $('#invitation').val();
                     }
-                    if (result.ret == -1) {
-                        alert('邀请码已经过期！')
+                    if (result.ret == 0) {
+                        alert('你输入的密码和账户不匹配');
                         return false;
                     }
                 },
                 error: function() {
-                    alert('服务器连接失败，请确认网络是否开启');
+                    alert('网络已经断开，你进入二次元的世界！');
                     return false;
                 }
             })
