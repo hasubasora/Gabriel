@@ -2,72 +2,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="stylesheets\main.css">
-    <script src="framework\jquery-2.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="framework\bootstrap.min.css">
+    <script type="text/javascript" src="framework/jquery.1.11.1.min.js"></script>
+    <script type="text/javascript" src="framework/bootstrap.min.js"></script>
+    <script type="text/javascript" src="framework/vue.js"></script>
+    <!--<script type="text/javascript" src="framework/vue.min.js"></script>-->
 
-    <title>密码页面</title>
+    <script src="javascripts/agumon.js"></script>
+    <title>vuejs</title>
+    <style>
+        .completed {
+            color: chartreuse;
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container">
 
-    <section>
-        <div class="pwd">
-            <input type="password" name="" id="password" placeholder="请输入8位以上的密码">
-            <input type="password" name="" id="password2" placeholder="重复密码">
-            <input type="button" value="注册" class="register">
-            <p>轻触上面“注册”按钮，即表示你已阅读并同意<a href="">《服务协议》</a></p>
+        <nav aria-label="...">
+            <ul class="pager">
+                <li v-for="item in types"><a v-bind:href="'#/'+item.link">{{item.title}}</a></li>
 
-        </div>
-    </section>
-
+            </ul>
+        </nav>
+        <!--绑定模板-->
+        <!--绑定模板上面的键-->
+        <component v-bind:is="show"></component>
+    </div>
 
 </body>
-<script>
-    $(function() {
-        register.init();
-    })
-    const register = {
-        init() {
-            _t = this;
-            //点击注册
-            $('.register').on('click', function() {
-                let r_len = _t.len($('#password').val());
-                // console.log(r_len);
-                if (r_len) {
-                    let r_dblen = _t.dblen($('#password').val(), $('#password2').val());
-                    // console.log(r_dblen);
-                    if (r_dblen) {
-                        window.location.href = "";
-                    }
-                }
 
-            })
-        },
-        len(p) {
-            console.log(p)
-            if (p.length > 0 && p.length < 8) {
-                alert('密码长度不够！');
-                return false;
-            }
-            if (!p) {
-                alert('请输入密码！');
-                return false;
-            }
-            return true;
-
-        },
-        dblen(p, p2) {
-            if (p.length > 8) {
-                if (p != p2) {
-                    alert('两次密码不一致');
-                    return false;
-                }
-                return true;
-            }
-        }
-    }
-</script>
 
 </html>
