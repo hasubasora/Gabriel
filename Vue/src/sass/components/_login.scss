@@ -1,0 +1,192 @@
+header {
+    @include span(12);
+    @include clearfix;
+    padding-top: rem(20);
+    .tag {
+        @include span(10);
+        margin: 0 auto;
+        float: none;
+        border: 1px solid nth($color, 1);
+        border-radius: 5px;
+        @include clearfix;
+        padding: 0;
+        span {
+            padding-top: rem(10);
+            padding-bottom: rem(10);
+            text-align: center;
+            &.tag-left {
+                @include span(6);
+            }
+            &.tag-right {
+                @include span(6);
+            }
+            &.on {
+                background: nth($color, 1);
+                color: nth($bgcolor, 1);
+            }
+        }
+    }
+}
+
+section {
+    @include span(12);
+    @include clearfix;
+    padding-top: rem(20);
+    .tel {
+        @include span(10);
+        padding: 0;
+        float: none;
+        margin: 0 auto;
+        @include clearfix;
+        .tel-dist {
+            @include span(2);
+            height: rem(40);
+            line-height: 40px;
+            background: nth($bgcolor, 1);
+        }
+        #tel {
+            height: rem(40);
+            @include span(10);
+        }
+    }
+    .code {
+        @extend .tel;
+        padding-top: rem(20);
+        position: relative;
+    }
+    #code {
+        @include span(12);
+        height: rem(40);
+    }
+    #qcCode {
+        line-height: rem(40);
+        height: rem(40);
+        position: absolute;
+        top: 20px;
+        z-index: 1;
+        right: 16px;
+    }
+    .qcCode1 {
+        height: rem(40);
+        position: absolute;
+        top: 20px;
+        z-index: 20;
+        right: 0;
+        width: 0;
+    }
+    .invitation {
+        @extend .tel;
+    }
+    #invitation {
+        height: rem(40);
+        @include span(12);
+    }
+    .next-tab {
+        background: nth($color, 1);
+        color: nth($bgcolor, 1);
+        @extend .tel;
+        height: rem(40);
+        margin: rem(20) auto;
+        @include span(12);
+    }
+    .next-tab2 {
+        @extend .next-tab;
+    }
+}
+
+h3 {
+    font-weight: 700;
+    margin: 24px auto;
+    width: 100%;
+    text-align: center;
+    font-size: rem(20);
+}
+
+h4 {
+    font-weight: 700;
+    margin: 24px auto;
+    width: 100%;
+    text-align: center;
+    font-size: rem(17);
+    color: nth($color, 1);
+}
+
+p {
+    margin: 24px auto;
+    text-align: center;
+    font-size: rem(16);
+    width: 100%;
+}
+
+.firm {
+    margin: 0 auto;
+    background: url(../images/u84.png) no-repeat;
+    height: rem(190);
+    width: rem(200);
+    position: relative;
+    img {
+        width: rem(80);
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+#firm-btn {
+    @include span(12);
+    height: rem(40);
+    background: nth($color, 1);
+    color: nth($bgcolor, 1);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: rem(10);
+}
+
+#firm-login-btn {
+    @include span(12);
+    height: rem(40);
+    background: nth($bgcolor, 1);
+    border: 1px solid nth($color, 1);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.firm-input {
+    @include span(10);
+    padding: 0;
+    float: none;
+    margin: 0 auto;
+    @include clearfix;
+    input {
+        border-radius: 50px;
+    }
+}
+
+.pwd {
+    @extend .tel;
+    input {
+        background: #f6f6f6;
+        font-size: rem(16);
+        border-bottom: 1px solid nth($color, 1)
+    }
+    #password {
+        height: rem(40);
+        line-height: rem(40);
+        @include span(12);
+        margin-bottom: rem(16);
+    }
+    #password2 {
+        height: rem(40);
+        line-height: rem(40);
+        margin-bottom: rem(16);
+        @include span(12);
+    }
+    .register {
+        height: rem(40);
+        line-height: rem(40);
+        margin-bottom: rem(16);
+        @include span(12);
+        background: nth($color, 1);
+        color: nth($bgcolor, 1);
+    }
+}

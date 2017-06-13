@@ -134,6 +134,16 @@ textarea {
   -webkit-appearance: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 html,
 body {
   font-family: "微软雅黑";
@@ -197,152 +207,285 @@ input[type=button] {
   cursor: pointer;
 }
 
-img {
-  display: block;
+input {
+  border: none;
+  outline: none;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
 }
 
-@font-face {
-  font-family: 'iconfont';
-  /* project id："135254" */
-  src: url("//at.alicdn.com/t/font_g1y8np82kyco9a4i.eot");
-  src: url("//at.alicdn.com/t/font_g1y8np82kyco9a4i.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_g1y8np82kyco9a4i.woff") format("woff"), url("//at.alicdn.com/t/font_g1y8np82kyco9a4i.ttf") format("truetype"), url("//at.alicdn.com/t/font_g1y8np82kyco9a4i.svg#iconfont") format("svg");
-}
-[class*=iconfont] {
-  font-family: "iconfont" !important;
-  font-size: 1rem;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/*<i class="iconfont">&#x33;</i>*/
 /*! Component 组件*/
-.fs-table {
-  table-layout: fixed;
-  width: 1300px;
+header {
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  *zoom: 1;
+  padding-top: 1.25rem;
 }
-.fs-table thead {
-  border: 1px solid red;
+header:before, header:after {
+  content: "";
+  display: table;
 }
-.fs-table thead th {
-  padding: 10px;
-  border: 1px solid red;
-  vertical-align: middle;
+header:after {
+  clear: both;
+  overflow: hidden;
 }
-.fs-table tbody {
-  border: 1px solid black;
+header .tag {
+  width: 83.33333%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  margin: 0 auto;
+  float: none;
+  border: 1px solid #1e89e0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  *zoom: 1;
+  padding: 0;
 }
-.fs-table tbody td {
-  border: 1px solid red;
-  padding: 10px;
+header .tag:before, header .tag:after {
+  content: "";
+  display: table;
 }
-.fs-table tfoot {
-  border: 1px solid red;
-  padding: 10px;
+header .tag:after {
+  clear: both;
+  overflow: hidden;
 }
-
-.aaa {
-  width: 1000px;
-  overflow: overlay;
-  overflow-x: auto;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-.fs-btn {
-  padding: 0.375rem 0.75rem;
-  display: inline-block;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
+header .tag span {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
   text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
+}
+header .tag span.tag-left {
+  width: 50%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+header .tag span.tag-right {
+  width: 50%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+header .tag span.on {
+  background: #1e89e0;
+  color: #fff;
 }
 
-.fs-btn-group .btn-lg {
-  padding: 10px 16px;
-  font-size: 18px;
-  line-height: 1.3333333;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
+section {
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  *zoom: 1;
+  padding-top: 1.25rem;
+}
+section:before, section:after {
+  content: "";
+  display: table;
+}
+section:after {
+  clear: both;
+  overflow: hidden;
+}
+section .tel, section .code, section .invitation, section .next-tab, section .next-tab2, section .pwd {
+  width: 83.33333%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  padding: 0;
+  float: none;
+  margin: 0 auto;
+  *zoom: 1;
+}
+section .tel:before, section .code:before, section .invitation:before, section .next-tab:before, section .next-tab2:before, section .pwd:before, section .tel:after, section .code:after, section .invitation:after, section .next-tab:after, section .next-tab2:after, section .pwd:after {
+  content: "";
+  display: table;
+}
+section .tel:after, section .code:after, section .invitation:after, section .next-tab:after, section .next-tab2:after, section .pwd:after {
+  clear: both;
+  overflow: hidden;
+}
+section .tel .tel-dist, section .code .tel-dist, section .invitation .tel-dist, section .next-tab .tel-dist, section .next-tab2 .tel-dist, section .pwd .tel-dist {
+  width: 16.66667%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  height: 2.5rem;
+  line-height: 40px;
+  background: #fff;
+}
+section .tel #tel, section .code #tel, section .invitation #tel, section .next-tab #tel, section .next-tab2 #tel, section .pwd #tel {
+  height: 2.5rem;
+  width: 83.33333%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+section .code {
+  padding-top: 1.25rem;
+  position: relative;
+}
+section #code {
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  height: 2.5rem;
+}
+section #qcCode {
+  line-height: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  top: 20px;
+  z-index: 1;
+  right: 16px;
+}
+section .qcCode1 {
+  height: 2.5rem;
+  position: absolute;
+  top: 20px;
+  z-index: 20;
+  right: 0;
+  width: 0;
+}
+section #invitation {
+  height: 2.5rem;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+section .next-tab, section .next-tab2 {
+  background: #1e89e0;
+  color: #fff;
+  height: 2.5rem;
+  margin: 1.25rem auto;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
 }
 
-.fs-btn-group .btn-sm {
-  padding: 5px 10px;
-  font-size: 12px;
-  line-height: 1.5;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
+h3 {
+  font-weight: 700;
+  margin: 24px auto;
+  width: 100%;
+  text-align: center;
+  font-size: 1.25rem;
 }
 
-.fs-btn-group .btn-xs {
-  padding: 1px 5px;
-  font-size: 12px;
-  line-height: 1.5;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
+h4 {
+  font-weight: 700;
+  margin: 24px auto;
+  width: 100%;
+  text-align: center;
+  font-size: 1.0625rem;
+  color: #1e89e0;
 }
 
-.fs-btn-success {
-  background: #1ab394;
-  color: white;
+p {
+  margin: 24px auto;
+  text-align: center;
+  font-size: 1rem;
+  width: 100%;
 }
 
-th,
-td {
-  font-size: 12px;
+.firm {
+  margin: 0 auto;
+  background: url(../images/u84.png) no-repeat;
+  height: 11.875rem;
+  width: 12.5rem;
+  position: relative;
 }
-th:nth-child(1),
-td:nth-child(1) {
-  width: 100px;
+.firm img {
+  width: 5rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
-th:nth-child(2),
-td:nth-child(2) {
-  width: 100px;
+
+#firm-btn {
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  height: 2.5rem;
+  background: #1e89e0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 0.625rem;
 }
-th:nth-child(3),
-td:nth-child(3) {
-  width: 100px;
+
+#firm-login-btn {
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  height: 2.5rem;
+  background: #fff;
+  border: 1px solid #1e89e0;
+  font-size: 16px;
+  font-weight: 600;
 }
-th:nth-child(4),
-td:nth-child(4) {
-  width: 100px;
+
+.firm-input {
+  width: 83.33333%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  padding: 0;
+  float: none;
+  margin: 0 auto;
+  *zoom: 1;
 }
-th:nth-child(5),
-td:nth-child(5) {
-  width: 100px;
+.firm-input:before, .firm-input:after {
+  content: "";
+  display: table;
 }
-th:nth-child(6),
-td:nth-child(6) {
-  width: 100px;
+.firm-input:after {
+  clear: both;
+  overflow: hidden;
 }
-th:nth-child(7),
-td:nth-child(7) {
-  width: 200px;
+.firm-input input {
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
 }
-th:nth-child(8),
-td:nth-child(8) {
-  width: 200px;
+
+.pwd input {
+  background: #f6f6f6;
+  font-size: 1rem;
+  border-bottom: 1px solid #1e89e0;
 }
-th:nth-child(9),
-td:nth-child(9) {
-  width: 200px;
+.pwd #password {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  margin-bottom: 1rem;
 }
-th:nth-child(10),
-td:nth-child(10) {
-  width: 200px;
+.pwd #password2 {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+.pwd .register {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  background: #1e89e0;
+  color: #fff;
 }

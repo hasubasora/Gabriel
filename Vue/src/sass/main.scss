@@ -20,12 +20,12 @@
 
 /*！layout 布局*/
 
-@import "layout/main",
-"layout/fontface";
+@import "layout/main" // "layout/fontface"
+;
 
 /*! Component 组件*/
 
 @import // "components/mode",
 //"components/qualify",
 // "components/procurement"
-"components/tables";
+"components/login";

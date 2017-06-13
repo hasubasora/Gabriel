@@ -5,75 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="stylesheets\main.css">
-    <!--<link rel="stylesheet" href="framework\bootstrap.min.css">-->
     <script src="framework\jquery-2.2.1.min.js"></script>
 
-
-    <title>测试s</title>
-    <style>
-
-    </style>
+    <title>密码页面</title>
 </head>
 
 <body>
-    <div class="col-md-12 fs-btn-group">
-        <input type="button" value="添添加添加添加加" id=btn class="fs-btn fs-btn-success btn-lg">
-        <input type="button" value="添添加添加添加加" id=btn class="fs-btn fs-btn-success btn-sm">
-        <input type="button" value="添添加添加添加加" id=btn class="fs-btn fs-btn-success btn-xs">
-        <input type="button" value="save" id=btn2 class="fs-btn fs-btn-success">
-    </div>
-    <div class="aaa">
 
-        <table class="fs-table">
-            <thead class="">
-                <th>序号</th>
-                <th>项目</th>
-                <th>岗位</th>
-                <th>姓名</th>
-                <th>性别</th>
-                <th>年龄</th>
-                <th width=185px;>身份号</th>
-                <th width=150px;>当月工作考勤天数</th>
-                <th width=134px;>当月工资结算数</th>
-                <th width=135px;>当月工资支付数</th>
-                <th width=192px;>工资支付状况(是否支付)</th>
-                <th>备注</th>
+    <section>
+        <div class="pwd">
+            <input type="password" name="" id="password" placeholder="请输入8位以上的密码">
+            <input type="password" name="" id="password2" placeholder="重复密码">
+            <input type="button" value="注册" class="register">
+            <p>轻触上面“注册”按钮，即表示你已阅读并同意<a href="">《服务协议》</a></p>
 
-            </thead>
-            <tbody>
-                <td>1</td>
-                <td>特种作业人员（工种）</td>
-                <td>搬砖</td>
-                <td>清水翔太</td>
-                <td>男</td>
-                <td>20</td>
-                <td>440103*********5139</td>
-                <td>12</td>
-                <td>34</td>
-                <td>3403234</td>
-                <td>34</td>
-                <td></td>
-            </tbody>
-            <tfoot></tfoot>
-        </table>
-
-    </div>
+        </div>
+    </section>
 
 
 </body>
-<script src="javascripts\app.js"></script>
-<script src="javascripts\filters.js"></script>
 <script>
     $(function() {
-        sf.init();
-        $('#btn2').on('click', function() {
-            console.log(filter.unhtml($('tbody td').eq(1).text()))
-                // var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
-            var a = filter.unhtml($('tbody td').eq(1).text());
-            console.log(filter.unBlank(a))
-                // $(this).val(filter.unhtmlForUrl($('tbody td').eq(1).text()))
-        })
+        register.init();
     })
+    const register = {
+        init() {
+            _t = this;
+            //点击注册
+            $('.register').on('click', function() {
+                let r_len = _t.len($('#password').val());
+                // console.log(r_len);
+                if (r_len) {
+                    let r_dblen = _t.dblen($('#password').val(), $('#password2').val());
+                    // console.log(r_dblen);
+                    if (r_dblen) {
+                        window.location.href = "";
+                    }
+                }
+
+            })
+        },
+        len(p) {
+            console.log(p)
+            if (p.length > 0 && p.length < 8) {
+                alert('密码长度不够！');
+                return false;
+            }
+            if (!p) {
+                alert('请输入密码！');
+                return false;
+            }
+            return true;
+
+        },
+        dblen(p, p2) {
+            if (p.length > 8) {
+                if (p != p2) {
+                    alert('两次密码不一致');
+                    return false;
+                }
+                return true;
+            }
+        }
+    }
 </script>
 
 </html>
