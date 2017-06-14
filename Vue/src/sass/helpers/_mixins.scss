@@ -132,8 +132,8 @@ $legacy-support-for-ie:true;
     text-indent: 5px;
 }
 
-@mixin text-center {
-    text-align: center;
+@mixin text-center ($c:center) {
+    text-align: $c;
 }
 
 // 不换行

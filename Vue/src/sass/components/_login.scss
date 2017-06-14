@@ -216,4 +216,28 @@ p {
         color: nth($bgcolor, 1);
         border-radius: 30px;
     }
+    //qiye
+    #enterprise {
+        height: rem(40);
+        line-height: rem(40);
+        @include span(12);
+        margin-bottom: rem(16);
+    }
+    #vocation {
+        height: rem(40);
+        line-height: rem(40);
+        @include span(12);
+        margin-bottom: rem(16);
+    }
+    #region {
+        height: rem(40);
+        line-height: rem(40);
+        @include span(12);
+        margin-bottom: rem(16);
+    }
+}
+
+.left {
+    @include text-center(left);
+    margin: 16px auto;
 }

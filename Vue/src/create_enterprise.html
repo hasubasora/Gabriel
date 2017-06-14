@@ -1,14 +1,77 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @@include('include/header.html')
     <title>创建企业</title>
 </head>
 
 <body>
 
+    <section>
+        <div class="pwd">
+
+            <input type="text" name="" id="enterprise" placeholder="企业名称" maxlength="30">
+            <p class="left">所属行业</p>
+            <select name="" id="vocation">
+                <option value="audi">打发时间看给你交</option>
+                <option value="audi">打发时间看给你交</option>
+                <option value="audi">打发时间看给你交打发时间看给你交</option>
+                <option value="audi">打发时间看给打发时间看给你交打发时间看给你交打发时间看给你交你交</option>
+                <option value="audi">打发时间看给你交</option>
+            </select>
+            <p class="left">所在地区</p>
+            <select name="" id="region">
+                <option value="audi">打发时间看给你交</option>
+                <option value="audi">打发时间看给你交</option>
+                <option value="audi">打发时间看给你交打发时间看给你交</option>
+                <option value="audi">打发时间看给打发时间看给你交打发时间看给你交打发时间看给你交你交</option>
+                <option value="audi">打发时间看给你交</option>
+            </select>
+            <button type="button" class="reg register" id="addfirm">创建企业</button>
+
+
+        </div>
+    </section>
 </body>
+<script>
+    $(function() {
+        firms.init();
+    })
+
+    const firms = {
+        config: {
+            $enterprise: '',
+        },
+        init() {
+            _t = this;
+            // 创建企业
+
+
+
+            $('#addfirm').on('click', function() {
+                var ent = filter.unhtml($('#enterprise').val());
+                console.log(ent);
+                if (_t.firm(ent)) {
+                    // ajax
+
+                }
+            })
+            $('#vocation').on('change', function() {
+                console.log($('#vocation').val())
+            })
+
+            $('#region').on('change', function() {
+                console.log(_t.firm($('#region').val()))
+            })
+
+
+        },
+
+        firm(str) { //检测是不是空
+            return str ? true : false;
+        }
+
+    }
+</script>
 
 </html>

@@ -1,7 +1,14 @@
 <html>
 
 <head>
-    @@include('include/header.html')
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="framework\layer.css">
+<link rel="stylesheet" href="stylesheets\main.css">
+<script src="framework\jquery-2.2.1.min.js"></script>
+<script src="framework\layer.js"></script>
+<script src="javascripts\filters.js"></script>
     <script>
         const sendCodeUrl = "${base}/qrCode/send",
             invitationUrl = "${base}/qrCode/check",
@@ -53,7 +60,7 @@
 
         init() {
             _t = this;
-            //切换
+            //切换 
             $('.tag span').on('click', function() {
                 _index = $(this).index();
                 $(this).addClass('on').siblings('span').removeClass('on');
@@ -82,11 +89,12 @@
                 if (el.id == 'pwd') {
                     $('#pwd').val() ? fige = 1 : fige = 0;
                 }
-                if (fige == 1 && make == 1) {
-                    $('.next-tab2').removeClass('disabled').removeAttr('disabled');
-                } else {
-                    $('.next-tab2').addClass('disabled').attr('disabled', 'disabled');
-                }
+                _t.dockeyup(make, fige, $('.next-tab2'));
+                // if (fige == 1 && make == 1) {
+                //     $('.next-tab2').removeClass('disabled').removeAttr('disabled');
+                // } else {
+                //     $('.next-tab2').addClass('disabled').attr('disabled', 'disabled');
+                // }
 
                 //注册页面
                 if (el.id == 'tel') {
@@ -95,7 +103,7 @@
                 if (el.id == 'code') {
                     $('#code').val() ? dots2 = 1 : dots2 = 0;
                 }
-                _t.dockeyup(dots, dots2, $('.next-tab'))
+                _t.dockeyup(dots, dots2, $('.next-tab'));
 
                 // if (dots == 1 && dots2 == 1) {
                 //     $('.next-tab').removeClass('disabled').removeAttr('disabled');
@@ -117,6 +125,7 @@
 
             //下一步 登录
             $('.next-tab2').on('click', function() {
+
                 _t.login($('#phone').val(), $('#pwd').val());
             });
 
@@ -304,6 +313,7 @@
 
 
         login(y, x) {
+
             $.ajax({
                 url: invitationUrl,
                 type: 'post',

@@ -53,7 +53,7 @@
 
         init() {
             _t = this;
-            //切换
+            //切换 
             $('.tag span').on('click', function() {
                 _index = $(this).index();
                 $(this).addClass('on').siblings('span').removeClass('on');
@@ -82,11 +82,12 @@
                 if (el.id == 'pwd') {
                     $('#pwd').val() ? fige = 1 : fige = 0;
                 }
-                if (fige == 1 && make == 1) {
-                    $('.next-tab2').removeClass('disabled').removeAttr('disabled');
-                } else {
-                    $('.next-tab2').addClass('disabled').attr('disabled', 'disabled');
-                }
+                _t.dockeyup(make, fige, $('.next-tab2'));
+                // if (fige == 1 && make == 1) {
+                //     $('.next-tab2').removeClass('disabled').removeAttr('disabled');
+                // } else {
+                //     $('.next-tab2').addClass('disabled').attr('disabled', 'disabled');
+                // }
 
                 //注册页面
                 if (el.id == 'tel') {
@@ -95,7 +96,7 @@
                 if (el.id == 'code') {
                     $('#code').val() ? dots2 = 1 : dots2 = 0;
                 }
-                _t.dockeyup(dots, dots2, $('.next-tab'))
+                _t.dockeyup(dots, dots2, $('.next-tab'));
 
                 // if (dots == 1 && dots2 == 1) {
                 //     $('.next-tab').removeClass('disabled').removeAttr('disabled');
@@ -117,6 +118,7 @@
 
             //下一步 登录
             $('.next-tab2').on('click', function() {
+
                 _t.login($('#phone').val(), $('#pwd').val());
             });
 
@@ -304,6 +306,7 @@
 
 
         login(y, x) {
+
             $.ajax({
                 url: invitationUrl,
                 type: 'post',
