@@ -1,10 +1,7 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="stylesheets\main.css">
+    @@include('include/header.html')
     <script>
         const sendCodeUrl = "${base}/qrCode/send",
             invitationUrl = "${base}/qrCode/check",
@@ -45,7 +42,7 @@
         </div>
     </section>
 </body>
-<script src="framework\jquery-2.2.1.min.js"></script>
+
 
 <script>
     $(function() {
@@ -134,10 +131,18 @@
         },
         codetime() {
             if (!$('#tel').val()) {
-                alert('输入手机号');
+                layer.open({
+                    content: '输入手机号',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
                 return false;
             } else if ($('#tel').val().length < 11) {
-                alert('输入正确手机号');
+                layer.open({
+                    content: '输入正确手机号',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
                 return false;
             }
             if ($('#tel').val().length == 11) {
@@ -149,7 +154,11 @@
                     _t.sendCode($('#tel').val());
                     return true;
                 } else {
-                    alert('输入正确手机号');
+                    layer.open({
+                        content: '输入正确手机号',
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
                     return false;
                 }
             }
@@ -168,17 +177,33 @@
                 success: function(result) {
                     if (result.status == 1) {
                         //验证成功再发送验证码 返回true  跳转下一步
-                        alert('发送成功');
+                        layer.open({
+                            content: '发送成功',
+                            skin: 'msg',
+                            time: 2 //2秒后自动关闭
+                        });
+
                         return true;
                     } else if (result.status == 0) {
-                        alert('发送失败');
+                        layer.open({
+                            content: '发送失败',
+                            skin: 'msg',
+                            time: 2 //2秒后自动关闭
+                        });
+
                         //返回false
                         return false;
 
                     }
                 },
                 error: function() {
-                    alert('服务器连接失败，请确认网络是否开启');
+
+                    layer.open({
+                        content: '你进入了没有网络的异次元世界！',
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
+
                     return false;
                 }
             })
@@ -191,7 +216,7 @@
             var a = 60;
             var timer = setInterval(function() {
                 if (a > 0) {
-                    obj.text("(" + a + ")重新获取");
+                    obj.text("(" + a + ")");
                     a--;
                 } else {
                     clearInterval(timer);
@@ -228,7 +253,11 @@
                     }
                 },
                 error: function() {
-                    alert('服务器连接失败，请确认网络是否开启');
+                    layer.open({
+                        content: '你进入了没有网络的异次元世界！',
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
                     return false;
                 }
             })
@@ -262,7 +291,11 @@
                     }
                 },
                 error: function() {
-                    alert('服务器连接失败，请确认网络是否开启');
+                    layer.open({
+                        content: '你进入了没有网络的异次元世界！',
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
                     return false;
                 }
             })
@@ -285,12 +318,20 @@
                         window.location.href = inviteR + "?code=" + $('#invitation').val();
                     }
                     if (result.ret == 0) {
-                        alert('你输入的密码和账户不匹配');
+                        layer.open({
+                            content: '你输入的密码和账户不匹配',
+                            skin: 'msg',
+                            time: 2 //2秒后自动关闭
+                        });
                         return false;
                     }
                 },
                 error: function() {
-                    alert('网络已经断开，你进入二次元的世界！');
+                    layer.open({
+                        content: '你进入了没有网络的异次元世界！',
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
                     return false;
                 }
             })

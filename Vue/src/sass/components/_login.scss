@@ -214,5 +214,6 @@ p {
         @include span(12);
         background: nth($color, 1);
         color: nth($bgcolor, 1);
+        border-radius: 30px;
     }
 }
