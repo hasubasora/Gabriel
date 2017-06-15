@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    @@include('include/header.html')
+    <title>企业选择</title>
+</head>
+
+<body>
+    <ul class="firmlist">
+        <li data-id='1'><img src="images\bkc.jpg" alt="" width="35" class="minlogo">海猫帝皇经销发展有限公司</li>
+        <li data-id='2'><img src="images\ad.png" alt="" width="35" class="minlogo">赚上十个亿的发展有限公司</li>
+        <li data-id='3'><img src="images\jbs.png" alt="" width="35" class="minlogo">杭州阿里巴巴科技发展有限公司</li>
+        <li data-id='4'><img src="images\bkc.jpg" alt="" width="35" class="minlogo">谁也不知道我的名字居然可以这么长的有限公司</li>
+
+    </ul>
+    <div class="subbox">
+        <buttom type='button' class="sub">确定</buttom>
+
+    </div>
+</body>
+<script>
+    $(function() {
+        firmList.init();
+    })
+
+    const firmList = {
+        init() {
+            _t = this;
+            $('ul li').on('click', function() {
+                $(this).addClass('act').siblings().removeClass('act');
+            })
+            var oli = $('.firmlist li');
+            $('.sub').on('click', function() {
+                _t.flist(oli)
+            })
+
+
+        },
+        flist(o) {
+            for (var i = 0; i < o.length; i++) {
+                // console.log($(o[i]).hasClass('act'));
+                if ($(o[i]).hasClass('act')) {
+                    // console.log($(o[i]).attr('data-id'));
+                    layer.open({
+                        content: '您确定要刷新一下本页面吗？',
+                        btn: ['刷新', '不要'],
+                        yes: function(index) {
+                            location.reload();
+                            layer.close(index);
+                        }
+                    });
+                    break;
+                } else {
+                    //提示
+                    layer.open({
+                        content: '请选择企业！',
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
+                }
+            }
+        }
+
+    }
+</script>
+
+</html>

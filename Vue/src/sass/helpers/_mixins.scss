@@ -55,7 +55,7 @@ $legacy-support-for-ie:true;
 }
 
 // 标题
-@mixin height($h:2.5rem) {
+@mixin height($h:3rem) {
     height: $h;
     line-height: $h;
 }

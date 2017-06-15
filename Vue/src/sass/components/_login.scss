@@ -241,3 +241,45 @@ p {
     @include text-center(left);
     margin: 16px auto;
 }
+
+.logoimg {
+    display: block;
+    margin: 0 auto;
+}
+
+.firmlist {
+    @include span(12);
+    >li {
+        @include height();
+        // text-indent: 20px;
+        padding: 0 rem(16);
+        @include text-nowrap();
+        border-bottom: 1px solid #CECFD0;
+    }
+}
+
+.act {
+    background: #5CA6E2;
+    // background: #CECFD0;
+    color: #fff;
+}
+
+.sub {
+    background: nth($color, 1);
+    color: nth($bgcolor, 1);
+    @include height();
+    @include span(12);
+    @include text-center();
+    position: fixed;
+    bottom: 0;
+}
+
+.subbox {
+    position: absolute;
+}
+
+.minlogo {
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}

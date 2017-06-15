@@ -543,3 +543,53 @@ p {
   text-align: left;
   margin: 16px auto;
 }
+
+.logoimg {
+  display: block;
+  margin: 0 auto;
+}
+
+.firmlist {
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+.firmlist > li {
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid #CECFD0;
+}
+
+.act {
+  background: #5CA6E2;
+  color: #fff;
+}
+
+.sub {
+  background: #1e89e0;
+  color: #fff;
+  height: 3rem;
+  line-height: 3rem;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.subbox {
+  position: absolute;
+}
+
+.minlogo {
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
