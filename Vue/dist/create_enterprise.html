@@ -9,6 +9,7 @@
 <script src="framework\jquery-2.2.1.min.js"></script>
 <script src="framework\layer.js"></script>
 <script src="javascripts\filters.js"></script>
+<script src="javascripts\firm.js"></script>
     <title>创建企业</title>
 </head>
 
@@ -52,9 +53,6 @@
         init() {
             _t = this;
             // 创建企业
-
-
-
             $('#addfirm').on('click', function() {
                 var ent = filter.unhtml($('#enterprise').val());
                 console.log(ent);

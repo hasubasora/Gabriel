@@ -9,6 +9,7 @@
 <script src="framework\jquery-2.2.1.min.js"></script>
 <script src="framework\layer.js"></script>
 <script src="javascripts\filters.js"></script>
+<script src="javascripts\firm.js"></script>
     <script>
         const sendCodeUrl = "${base}/qrCode/send",
             invitationUrl = "${base}/qrCode/check",
@@ -139,7 +140,7 @@
             if (d1 == 1 && d2 == 1) {
                 d3.removeClass('disabled').removeAttr('disabled');
             } else {
-                d3.addClass('disabled').attr('disabled', 'disabled');
+                d3.addClass('disabled').attr('disabled', 'true');
             }
 
         },

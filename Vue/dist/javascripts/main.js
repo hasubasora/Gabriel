@@ -439,6 +439,9 @@ var filter = {
         return str ? str.replace(/\s/ig, '') : '';
     }
 };
+"use strict";
+
+console.log(233456789);
 'use strict';
 
 window.onload = function () {
