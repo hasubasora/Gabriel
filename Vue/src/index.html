@@ -1,45 +1,15 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @@include('include/meta.html')
     <link rel="stylesheet" href="stylesheets\main.css">
     <!--<link rel="stylesheet" href="framework\bootstrap.min.css">-->
     <script src="framework\jquery-2.2.1.min.js"></script>
-    <title>Document</title>
+    <title>订单结算</title>
 </head>
 
 <body>
 
-    <input type="button" value="333366533333">
-    <div class="box">
-        <div class="bigbox">
-            <div class="title">SKI</div>
-            <div class="content">
-                <p>提示士大夫速度！提示士大夫速度！提示士大夫速度！</p>
-            </div>
-            <div class="tail">
-                <span><a href="#" class="yes">×</a></span>
-                <span><a href="#" class="no">○</a></span>
-            </div>
-        </div>
-    </div>
 </body>
-<script>
-    document.getElementsByClassName('no')[0].onclick = function() {
-        document.getElementsByClassName('bigbox')[0].classList.add('tf');
-
-        setTimeout(function() {
-            document.getElementsByClassName('box')[0].style.display = "none";
-        }, 400);
-        setTimeout(function() {
-            document.getElementsByClassName('bigbox')[0].classList.remove('tf');
-        }, 1000);
-    }
-    document.getElementsByTagName('input')[0].onclick = function() {
-        document.getElementsByClassName('box')[0].style.display = "block";
-    }
-</script>
 
 </html>
